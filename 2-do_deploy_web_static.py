@@ -15,7 +15,7 @@ def do_deploy(archive_path):
     if path.exits(archive_path):
         try:
             path_ls = archive_path.split("/")
-            file_name = path_ls.pop()
+            file_name = path_ls[-1]
             name_no_ext = file_name.split(".")[0]
             p = "/data/web_static/releases/"
             put(archive_path, "/tmp/")
