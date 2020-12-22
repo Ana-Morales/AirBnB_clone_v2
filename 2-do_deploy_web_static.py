@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Distributes an archive to your web servers"""
-from fabric.api import local, run, put
+from fabric.api import local, run, put, env
 from datetime import datetime
 from os import path
 
