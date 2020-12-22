@@ -9,6 +9,19 @@ env.host = ['35.243.206.188', '35.227.112.80']
 env.user = "ubuntu"
 
 
+def do_pack():
+    """Generates a tgz archive"""
+
+    try:
+        file_time = datetime.now().strftime("%Y%m%d%H%M%S")
+        file_name = "web_static_{}.tgz".format(file_time)
+        comm = "tar -cvzf versions/{} web_static".format(file_name)
+        local("mkdir -p versions")
+        return local(comm)
+    except:
+        return None
+
+
 def do_deploy(archive_path):
     """distributes an archive to your web servers"""
 
