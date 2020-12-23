@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """creates and distributes an archive to your web servers"""
-
 from fabric.api import local, run, put, env
 from datetime import datetime
 from os import path
@@ -47,8 +46,8 @@ def do_deploy(archive_path):
 
 
 def deploy():
-    """creates and distributes an archive to your web server"""
-    path = do_pack()
-    if path is None:
+    """creates and distributes an archive to your web servers"""
+    archive_path = do_pack()
+    if archive_path is None:
         return False
-    return do_deploy(path)
+    return do_deploy(archive_path)
