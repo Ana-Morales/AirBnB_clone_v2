@@ -42,13 +42,13 @@ def do_deploy(archive_path):
             return True
         except:
             return False
-    else:
-        return False
+    return False
 
 
 def deploy():
     """creates and distributes an archive to your web servers"""
     archive_path = do_pack()
     if archive_path:
-        return do_deploy(archive_path)
+        do_deploy(archive_path)
+        return True
     return False
