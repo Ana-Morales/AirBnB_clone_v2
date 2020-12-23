@@ -15,7 +15,8 @@ def do_pack():
         file_time = datetime.now().strftime("%Y%m%d%H%M%S")
         file_name = "web_static_{}.tgz".format(file_time)
         comm = "tar -cvzf versions/{} web_static".format(file_name)
-        local("mkdir -p versions")
+        if path.isdir("versions") is False:
+            local("mkdir -p versions")
         return local(comm)
     except:
         return None
@@ -47,7 +48,7 @@ def do_deploy(archive_path):
 
 def deploy():
     """creates and distributes an archive to your web servers"""
-    archive_path = None
+    archive_path = do_pack()
     if archive_path:
         return do_deploy(archive_path)
     return False
