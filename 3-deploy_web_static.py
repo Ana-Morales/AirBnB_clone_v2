@@ -17,7 +17,8 @@ def do_pack():
         comm = "tar -cvzf versions/{} web_static".format(file_name)
         if path.isdir("versions") is False:
             local("mkdir -p versions")
-        return local(comm)
+        local(comm)
+        return "versions/web_static_{}.tgz".format(file_name)
     except:
         return None
 
